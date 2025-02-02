@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Duke {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String[] tasks = new String[100];
+        Task[] tasks = new Task[100];
         int taskCount = 0;
 
         String greeting = "Hello! I'm Shew\n" + "What can I do for you?";
@@ -20,20 +20,20 @@ public class Duke {
                 for (int i = 0; tasks[i] != null; i++) {
                     System.out.println(i+1 + "." + tasks[i]);
                 }
-            } else if (!input.contains("unmark") && input.contains("mark")) {
-                String index = input.substring(5);
-                String replaced = tasks[Integer.parseInt(index) - 1].replace("[ ]", "[X]");
-                tasks[Integer.parseInt(index) - 1] = replaced;
+            } else if (!input.contains("un") && input.contains("mark")) {
+                String tmp = input.substring(5);
+                int index = Integer.parseInt(tmp) - 1;
+                tasks[index].markAsDone();
                 System.out.println("Nice! I've marked this task as done:");
-                System.out.println(" "  +replaced);
+                System.out.println(tasks[index]);
             } else if (input.contains("unmark")) {
-                String index = input.substring(7);
-                String replaced = tasks[Integer.parseInt(index) - 1].replace("[X]", "[ ]");
-                tasks[Integer.parseInt(index) - 1] = replaced;
+                String tmp = input.substring(7);
+                int index = Integer.parseInt(tmp) - 1;
+                tasks[index].markAsNotDone();
                 System.out.println("OK, I've marked this task as not done yet:");
-                System.out.println(" " + replaced);
+                System.out.println(tasks[index]);
             } else {
-                tasks[taskCount++] = "[ ] " + input;
+                tasks[taskCount++] = new Task(input);
                 System.out.println("added: " + input);
             }
         }
