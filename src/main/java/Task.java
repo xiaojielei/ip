@@ -3,7 +3,7 @@ public class Task {
     protected boolean isDone;
 
     public Task(String description) {
-        this.description = "[ ] " + description;
+        this.description = description;
         this.isDone = false;
     }
 
@@ -19,14 +19,7 @@ public class Task {
         this.isDone = false;
     }
 
-    public String toString() {
-        String changedIcon = "[" + getStatusIcon() + "]";
-        String result;
-        if (getStatusIcon().equals("X"))
-            result = description.replace("[ ]", changedIcon);
-        else
-            result = description.replace("[X]", changedIcon);
-        return result;
-    }
-
+   public String toString() {
+        return  "[ ][" + getStatusIcon() + "]" + description;
+   }
 }
