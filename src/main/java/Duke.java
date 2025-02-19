@@ -1,9 +1,16 @@
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
-
+import java.io.File;
 
 public class Duke {
-    private static ArrayList<Task> tasks = new ArrayList<>()
+    private static ArrayList<Task> tasks = new ArrayList<>();
+    private static File f = new File("docs/duke.txt");
+    private static String DIRECTORY_PATH = "docs";
+    private static File DIRECTORY = new File(DIRECTORY_PATH);
+
 
     public static void printLine() {
         System.out.println("----------------------------------------------");
@@ -110,7 +117,29 @@ public class Duke {
         printLine();
     }
 
-    public static void main(String[] args) {
+
+    private static void saveTasksToFile() throws IOException {
+        FileWriter fw = new FileWriter(f);
+        for (Task task : tasks) {
+            fw.write(task.toString() + System.lineSeparator());
+        }
+        fw.close();
+    }
+
+    private static void loadTasksFromFile() throws IOException {
+        if (!DIRECTORY.exists()) DIRECTORY.mkdir();
+        if (!f.exists()) f.createNewFile();
+        Scanner scanner = new Scanner(f);
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            tasks.add(new Task(line));
+        }
+        scanner.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        loadTasksFromFile();
+
         Scanner in = new Scanner(System.in);
 
         System.out.println("Hello! I'm XIAO\n" + "What can I do for you?");
