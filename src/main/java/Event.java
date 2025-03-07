@@ -10,7 +10,11 @@ class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+        if (!super.toString().contains("X")) {
+            return super.toString().replace("[ ][ ]", "[E][ ]") + " (from: " + from + " to: " + to + ")";
+        } else {
+            return super.toString().replace("[ ]", "[E]") + " (from: " + from + " to: " + to + ")";
+        }
     }
 }
 

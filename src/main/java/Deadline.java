@@ -13,6 +13,10 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        if (!super.toString().contains("X")) {
+            return super.toString().replace("[ ][ ]", "[D][ ]") + " (by: " + by + ")";
+        } else {
+            return super.toString().replace("[ ]", "[D]") + " (by: " + by + ")";
+        }
     }
 }
