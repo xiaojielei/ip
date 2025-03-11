@@ -1,6 +1,5 @@
 # Duke User Guide
-// Product screenshot goes here
-
+![img.png](img.png)
 ## Introduction
 Duke is a simple chatbot that allows users to manage their tasks efficiently. Users can add, list, mark, unmark, delete, and find tasks. The chatbot saves tasks to a file and loads them automatically upon startup.
 
@@ -18,15 +17,9 @@ What can I do for you?
 ### 1. Listing All Tasks
 **Command:** `list`
 
-// Describe the action and its outcome.
-
 Displays all tasks stored in the task list.
 
-// Give examples of usage
-
 Example: `list`
-
-// A description of the expected outcome goes here
 
 ```
 1. [T][ ] Read a book
@@ -54,15 +47,9 @@ Now you have 1 task in the list.
 #### b) Adding a Deadline Task
 **Command:** `deadline <task description> /by <due date>`
 
-// Describe the action and its outcome.
-
 Adds a task with a deadline to the list.
 
-// Give examples of usage
-
 Example: `deadline Submit assignment /by Monday`
-
-// A description of the expected outcome goes here
 
 ```
 Got it. I've added this task:
