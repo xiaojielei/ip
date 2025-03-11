@@ -1,7 +1,8 @@
 import java.io.IOException;
 
+
 public class Duke {
-    private static final Run run = new Run();
+    private static final Parser parser = new Parser();
 
     /**
      * The main method that starts the DAuke application.
@@ -9,6 +10,6 @@ public class Duke {
      * @throws IOException If an I/O error occurs during file operations.
      */
     public static void main(String[] args) throws IOException {
-        run.runDuke();
+        parser.runDuke();
     }
 }

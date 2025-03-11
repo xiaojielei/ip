@@ -1,3 +1,6 @@
+/**
+ * deals with interactions with the user
+ */
 public class Ui {
     private static void printLine() {
         System.out.println("----------------------------------------------");
@@ -6,6 +9,9 @@ public class Ui {
     public Ui() {
     }
 
+    /**
+     * Prints the greeting message
+     */
     public void Greet() {
         System.out.println("Hello! I'm Duke\n" + "What can I do for you?");
     }

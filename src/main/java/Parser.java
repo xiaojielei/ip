@@ -2,14 +2,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Run {
+/**
+ * Run the major flow of the whole program
+ * and deals with making sense of the user command
+ */
+public class Parser {
     private static final ArrayList<Task> tasks = new ArrayList<>(); // The list of tasks managed by Duke.
     private static final Storage storage = new Storage();
     private static final Ui ui = new Ui();
 
-    public Run () {
-    }
-
+    /**
+     * Deals with the user's command
+     * @throws IOException when If an I/O error occurs in Filewriter()
+     */
     public void runDuke() throws IOException {
         storage.loadTasksFromFile(tasks);
         Scanner in = new Scanner(System.in);

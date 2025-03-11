@@ -1,7 +1,9 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-/// The class dealing with adding/deleting/finding a task
+/**
+ * Contains the task list e.g., it has operations to add/delete tasks in the list
+ */
 public class Tasklist {
     private static ArrayList<Task> tasks;
 
