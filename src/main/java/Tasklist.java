@@ -182,7 +182,7 @@ public class Tasklist {
             System.out.println(newTask);
             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
             printLine();
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
         }
     }
