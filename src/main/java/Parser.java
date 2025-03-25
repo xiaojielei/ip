@@ -27,8 +27,9 @@ public class Parser {
                 if (input.equals("bye")) {
                     ui.exit();
                     break;
-                } else if (input.equals("list")) tasklist.list();
-                else if (input.startsWith("mark")) {
+                } else if (input.equals("list")) {
+                    tasklist.list();
+                } else if (input.startsWith("mark")) {
                     tasklist.mark(input);
                 } else if (input.startsWith("unmark")) {
                     tasklist.unmark(input);
@@ -41,8 +42,7 @@ public class Parser {
                 } else if (input.startsWith("delete")) {
                     tasklist.deleteTask(input);
                 } else if (input.startsWith("find")) {
-                    String wordToFind = input.substring(5);
-                    tasklist.find(wordToFind);
+                    tasklist.find(input);
                 } else {
                     throw new DukeException("Sorry, I don't understand that command. Please try again.");
                 }
