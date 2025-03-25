@@ -24,6 +24,9 @@ public class Parser {
         while (true) {
             String input = in.nextLine();
             try {
+                if (input == null) {
+                    throw new DukeException("Input is null.");
+                }
                 if (input.equals("bye")) {
                     ui.exit();
                     break;

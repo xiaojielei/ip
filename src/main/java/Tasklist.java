@@ -46,8 +46,8 @@ public class Tasklist {
             if (input == null || tasks == null) {
                 throw new DukeException("Unexpected error: Null value encountered.");
             }
-
             printLine();
+
             if (input.contains("mark /")) {
                 throw new DukeException("Oops! The description of a mark cannot be empty.");
             }
@@ -107,12 +107,11 @@ public class Tasklist {
             if (input == null || tasks == null) {
                 throw new DukeException("Unexpected error: Null value encountered.");
             }
-
             printLine();
-            if (input.contains("todo /")) {
+            Task newTask = new Todo(input.substring(5).trim());
+            if (newTask.description.equals("")) {
                 throw new DukeException("Oops! The description of a todo cannot be empty.");
             }
-            Task newTask = new Todo(input.substring(5).trim());
             tasks.add(newTask);
             System.out.println("Got it. I've added this task:");
             System.out.println(newTask);
@@ -139,6 +138,9 @@ public class Tasklist {
             printLine();
             if (input.contains("deadline /")) {
                 throw new DukeException("Oops! The description of a deadline cannot be empty.");
+            }
+            if (!input.contains(" /by ")) {
+                throw new DukeException("Invalid event format! Use: deadline /by <end time>");
             }
             String[] parts = input.substring(9).trim().split(" /by ");
             Task newTask = new Deadline(parts[0].trim(), parts[1].trim());
