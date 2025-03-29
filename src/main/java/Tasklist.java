@@ -12,7 +12,7 @@ public class Tasklist {
     }
 
     public void printLine() {
-        System.out.println("----------------------------------------------");
+        System.out.println(Messages.LINE_SEPARATOR);
     }
 
     /**
@@ -22,9 +22,9 @@ public class Tasklist {
         try {
             printLine();
             if (tasks.isEmpty()) {
-                System.out.println("Your task list is empty.");
+                System.out.println(Messages.EMPTY_TASK_LIST);
             } else {
-                System.out.println("Here are the tasks in your list:");
+                System.out.println(Messages.HERE_ARE_TASKS);
                 for (int i = 0; i < tasks.size(); i++) {
                     System.out.println((i + 1) + "." + tasks.get(i));
                 }
@@ -44,25 +44,25 @@ public class Tasklist {
     public void mark(String input) throws DukeException {
         try {
             if (input == null || tasks == null) {
-                throw new DukeException("Unexpected error: Null value encountered.");
+                throw new DukeException(Messages.NULL_VALUE_ERROR);
             }
             printLine();
 
             if (input.contains("mark /")) {
-                throw new DukeException("Oops! The description of a mark cannot be empty.");
+                throw new DukeException(Messages.MARK_DESCRIPTION_EMPTY);
             }
             int index = Integer.parseInt(input.substring(5).trim()) - 1;
             if (index < 1 || index >= tasks.size()) {
-                throw new DukeException("Invalid index.");
+                throw new DukeException(Messages.INVALID_INDEX);
             }
             tasks.get(index).markAsDone();
-            System.out.println("Nice! I've marked this task as done:");
+            System.out.println(Messages.TASK_MARKED_DONE);
             System.out.println(tasks.get(index));
             printLine();
         } catch (NumberFormatException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         } catch (IndexOutOfBoundsException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. Please try again by referring to the user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         }
     }
 
@@ -72,26 +72,26 @@ public class Tasklist {
      * @param input The user input containing the unmark command and task index.
      * @throws DukeException If the input is invalid or the task index is out of bounds.
      */
-    public void unmark(String input) throws DukeException{
+    public void unmark(String input) throws DukeException {
         try {
             if (input == null || tasks == null) {
-                throw new DukeException("Unexpected error: Null value encountered.");
+                throw new DukeException(Messages.NULL_VALUE_ERROR);
             }
 
             printLine();
             if (input.contains("unmark /")) {
-                throw new DukeException("Oops! The description of an unmark cannot be empty.");
+                throw new DukeException(Messages.UNMARK_DESCRIPTION_EMPTY);
             }
             int index = Integer.parseInt(input.substring(7).trim()) - 1;
             if (index < 1 || index >= tasks.size()) {
-                throw new DukeException("Invalid index.");
+                throw new DukeException(Messages.INVALID_INDEX);
             }
             tasks.get(index).markAsNotDone();
-            System.out.println("OK, I've marked this task as not done yet:");
+            System.out.println(Messages.TASK_MARKED_NOT_DONE);
             System.out.println(tasks.get(index));
             printLine();
         } catch (RuntimeException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         }
     }
 
@@ -105,20 +105,20 @@ public class Tasklist {
     public void todo(String input) throws DukeException, IOException {
         try {
             if (input == null || tasks == null) {
-                throw new DukeException("Unexpected error: Null value encountered.");
+                throw new DukeException(Messages.NULL_VALUE_ERROR);
             }
             printLine();
             Task newTask = new Todo(input.substring(5).trim());
             if (newTask.description.equals("")) {
-                throw new DukeException("Oops! The description of a todo cannot be empty.");
+                throw new DukeException(Messages.TODO_DESCRIPTION_EMPTY);
             }
             tasks.add(newTask);
-            System.out.println("Got it. I've added this task:");
+            System.out.println(Messages.TASK_ADDED);
             System.out.println(newTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            System.out.println(Messages.TASK_LIST_SIZE + tasks.size() + Messages.TASKS_IN_LIST);
             printLine();
         } catch (RuntimeException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         }
     }
 
@@ -132,25 +132,25 @@ public class Tasklist {
     public void deadline(String input) throws DukeException, IOException {
         try {
             if (input == null || tasks == null) {
-                throw new DukeException("Unexpected error: Null value encountered.");
+                throw new DukeException(Messages.NULL_VALUE_ERROR);
             }
 
             printLine();
             if (input.contains("deadline /")) {
-                throw new DukeException("Oops! The description of a deadline cannot be empty.");
+                throw new DukeException(Messages.DEADLINE_DESCRIPTION_EMPTY);
             }
             if (!input.contains(" /by ")) {
-                throw new DukeException("Invalid event format! Use: deadline /by <end time>");
+                throw new DukeException(Messages.INVALID_EVENT_FORMAT);
             }
             String[] parts = input.substring(9).trim().split(" /by ");
             Task newTask = new Deadline(parts[0].trim(), parts[1].trim());
             tasks.add(newTask);
-            System.out.println("Got it. I've added this task:");
+            System.out.println(Messages.TASK_ADDED);
             System.out.println(newTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            System.out.println(Messages.TASK_LIST_SIZE + tasks.size() + Messages.TASKS_IN_LIST);
             printLine();
         } catch (RuntimeException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         }
     }
 
@@ -164,26 +164,26 @@ public class Tasklist {
     public void event(String input) throws DukeException {
         try {
             if (input == null || tasks == null) {
-                throw new DukeException("Unexpected error: Null value encountered.");
+                throw new DukeException(Messages.NULL_VALUE_ERROR);
             }
 
             printLine();
             if (input.contains("event /")) {
-                throw new DukeException("Oops! The description of an event cannot be empty.");
+                throw new DukeException(Messages.EVENT_DESCRIPTION_EMPTY);
             }
             if (!input.contains(" /from ") || !input.contains(" /to ")) {
-                throw new DukeException("Invalid event format! Use: event <description> /from <start time> /to <end time>");
+                throw new DukeException(Messages.INVALID_EVENT_FORMAT);
             }
             String[] parts = input.substring(6).trim().split(" /from ");
             String[] timeParts = parts[1].split(" /to ");
             Task newTask = new Event(parts[0].trim(), timeParts[0].trim(), timeParts[1].trim());
             tasks.add(newTask);
-            System.out.println("Got it. I've added this task:");
+            System.out.println(Messages.TASK_ADDED);
             System.out.println(newTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            System.out.println(Messages.TASK_LIST_SIZE + tasks.size() + Messages.TASKS_IN_LIST);
             printLine();
         } catch (RuntimeException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         }
     }
 
@@ -193,29 +193,29 @@ public class Tasklist {
      * @param input The user input containing the delete command and task index.
      * @throws DukeException If the input is invalid or the task index is out of bounds.
      */
-    public void deleteTask(String input) throws DukeException{
+    public void deleteTask(String input) throws DukeException {
         try {
             if (input == null || tasks == null) {
-                throw new DukeException("Unexpected error: Null value encountered.");
+                throw new DukeException(Messages.NULL_VALUE_ERROR);
             }
 
             printLine();
             if (input.contains("delete /")) {
-                throw new DukeException("Oops! The description of a delete cannot be empty.");
+                throw new DukeException(Messages.DELETE_DESCRIPTION_EMPTY);
             }
             int index = Integer.parseInt(input.substring(7).trim()) - 1;
             if (index < 0 || index >= tasks.size()) {
-                throw new DukeException("Oops! The task number is invalid.");
+                throw new DukeException(Messages.INVALID_TASK_NUMBER);
             }
             Task removedTask = tasks.remove(index);
-            System.out.println("Noted. I've removed this task:");
+            System.out.println(Messages.TASK_REMOVED);
             System.out.println("  " + removedTask);
-            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
+            System.out.println(Messages.TASK_LIST_SIZE + tasks.size() + Messages.TASKS_IN_LIST);
             printLine();
         } catch (NumberFormatException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new DukeException("Oops! Invalid task number, please check the task index.");
+            throw new DukeException(Messages.INVALID_TASK_NUMBER);
         }
     }
 
@@ -228,15 +228,15 @@ public class Tasklist {
     public void find(String input) throws DukeException {
         try {
             if (input == null || tasks == null) {
-                throw new DukeException("Unexpected error: Null value encountered.");
+                throw new DukeException(Messages.NULL_VALUE_ERROR);
             }
 
             String wordToFind = input.substring(5);
             if (input.trim().equals("find")) {
-                throw new DukeException("Oops! You omitted the word to find.");
+                throw new DukeException(Messages.MISSING_WORD_TO_FIND);
             }
             if (wordToFind.isEmpty()) {
-                throw new DukeException("Oops! You omitted the word to find.");
+                throw new DukeException(Messages.MISSING_WORD_TO_FIND);
             }
             printLine();
             ArrayList<Task> matchingTasks = new ArrayList<>();
@@ -246,18 +246,18 @@ public class Tasklist {
                 }
             }
             if (matchingTasks.isEmpty()) {
-                throw new DukeException("No matching tasks found.");
+                throw new DukeException(Messages.NO_MATCHING_TASKS);
             } else {
-                System.out.println("Here are the matching tasks in your list:");
+                System.out.println(Messages.MATCHING_TASKS);
                 for (int i = 0; i < matchingTasks.size(); i++) {
                     System.out.println((i + 1) + "." + matchingTasks.get(i));
                 }
             }
             printLine();
         } catch (StringIndexOutOfBoundsException e) {
-            throw new DukeException("Oops! You omitted the word to find.");
+            throw new DukeException(Messages.MISSING_WORD_TO_FIND);
         } catch (RuntimeException e) {
-            throw new DukeException("Oops! You may have typed in incorrectly. PLease try again by referring to user guide.");
+            throw new DukeException(Messages.INVALID_INPUT_ERROR);
         } catch (DukeException e) {
             throw e;
         }

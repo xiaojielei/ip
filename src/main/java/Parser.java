@@ -27,26 +27,38 @@ public class Parser {
                 if (input == null) {
                     throw new DukeException("Input is null.");
                 }
-                if (input.equals("bye")) {
+                String[] words = input.split(" ", 2);
+                String command = words[0];
+
+                switch (command) {
+                case "bye":
                     ui.exit();
-                    break;
-                } else if (input.equals("list")) {
+                    return;
+                case "list":
                     tasklist.list();
-                } else if (input.startsWith("mark")) {
+                    break;
+                case "mark":
                     tasklist.mark(input);
-                } else if (input.startsWith("unmark")) {
+                    break;
+                case "unmark":
                     tasklist.unmark(input);
-                } else if (input.startsWith("todo")) {
+                    break;
+                case "todo":
                     tasklist.todo(input);
-                } else if (input.startsWith("deadline")) {
+                    break;
+                case "deadline":
                     tasklist.deadline(input);
-                } else if (input.startsWith("event")) {
+                    break;
+                case "event":
                     tasklist.event(input);
-                } else if (input.startsWith("delete")) {
+                    break;
+                case "delete":
                     tasklist.deleteTask(input);
-                } else if (input.startsWith("find")) {
+                    break;
+                case "find":
                     tasklist.find(input);
-                } else {
+                    break;
+                default:
                     throw new DukeException("Sorry, I don't understand that command. Please try again.");
                 }
                 storage.saveTasksToFile(tasks);
@@ -57,7 +69,5 @@ public class Parser {
             }
         }
 
-        in.close();
     }
-
 }

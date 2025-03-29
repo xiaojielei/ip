@@ -8,8 +8,8 @@ import java.util.Scanner;
  * Deals with loading tasks from the file and saving tasks in the file
  */
 public class Storage {
-    private static final File f = new File("docs/duke.txt");
-    private static final String DIRECTORY_PATH = "docs";
+    private static final File f = new File(Messages.PATHNAME);
+    private static final String DIRECTORY_PATH = Messages.DIRECTORY_PATH;
     private static final File DIRECTORY = new File(DIRECTORY_PATH);
 
     public Storage() {
