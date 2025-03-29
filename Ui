@@ -1,12 +1,23 @@
+import java.util.Scanner;
+
+/**
+ * deals with interactions with the user
+ */
 public class Ui {
+    private final Scanner scanner;
+
     private static void printLine() {
-        System.out.println("----------------------------------------------");
+        System.out.println(Messages.LINE_SEPARATOR);
     }
 
-    public Ui() {
+    public Ui(Scanner in) {
+        this.scanner = in;
     }
 
-    public void Greet() {
+    /**
+     * Prints the greeting message
+     */
+    public void greet() {
         System.out.println("Hello! I'm Duke\n" + "What can I do for you?");
     }
 
@@ -17,5 +28,12 @@ public class Ui {
         printLine();
         System.out.println("Bye. Hope to see you again soon!");
         printLine();
+    }
+
+    /**
+     * Gets user's input.
+     */ 
+    public String getUserInput() {
+        return scanner.nextLine();
     }
 }
