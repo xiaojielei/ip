@@ -175,7 +175,11 @@ public class Tasklist {
             }
 
             String[] parts = input.substring(Messages.SPACE_THAT_DEADLINE_TAKES).trim().split(Messages.DEADLINE_TIME_DESCRIPTION_SEPERATOR);
-            Task newTask = new Deadline(parts[0].trim(), parts[1].trim());
+
+            String deadlineDescription = parts[0];
+            String deadlineEndTime = parts[1];
+
+            Task newTask = new Deadline(deadlineDescription.trim(), deadlineEndTime.trim());
             tasks.add(newTask);
             System.out.println(Messages.TASK_ADDED);
             System.out.println(newTask);
@@ -211,7 +215,12 @@ public class Tasklist {
 
             String[] parts = input.substring(Messages.SPACE_THAT_EVENT_TAKES).trim().split(Messages.EVENT_FORM_SEPERATOR);
             String[] timeParts = parts[1].split(Messages.EVENT_TO_SEPERATOR);
-            Task newTask = new Event(parts[0].trim(), timeParts[0].trim(), timeParts[1].trim());
+
+            String eventDescription = parts[0];
+            String startTime = timeParts[0];
+            String endTime = timeParts[1];
+
+            Task newTask = new Event(eventDescription.trim(), startTime.trim(), endTime.trim());
             tasks.add(newTask);
             System.out.println(Messages.TASK_ADDED);
             System.out.println(newTask);
