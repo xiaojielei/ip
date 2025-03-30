@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Storage {
+public class storage.storage {
     private static final File f = new File("docs/duke.txt");
     private static final String DIRECTORY_PATH = "docs";
     private static final File DIRECTORY = new File(DIRECTORY_PATH);
 
-    public Storage() {
+    public storage.storage() {
     }
 
     /**
@@ -17,24 +17,24 @@ public class Storage {
      *
      * @throws IOException If an I/O error occurs.
      */
-    public void loadTasksFromFile(ArrayList<Task> tasks) throws IOException {
+    public void loadTasksFromFile(ArrayList<tasks.Task> tasks) throws IOException {
         if (!DIRECTORY.exists()) DIRECTORY.mkdir();
         if (!f.exists()) f.createNewFile();
         Scanner scanner = new Scanner(f);
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] parts = line.split(" \\| ");
-            Task task;
+            tasks.Task task;
 
             switch (parts[0]) {
             case "T":
-                task = new Todo(parts[2]);
+                task = new tasks.Todo(parts[2]);
                 break;
             case "D":
-                task = new Deadline(parts[2], parts[3]);
+                task = new tasks.Deadline(parts[2], parts[3]);
                 break;
             case "E":
-                task = new Event(parts[2], parts[3], parts[4]);
+                task = new tasks.Event(parts[2], parts[3], parts[4]);
                 break;
             default:
                 continue;
@@ -52,15 +52,15 @@ public class Storage {
      *
      * @throws IOException If an I/O error occurs.
      */
-    public void saveTasksToFile(ArrayList<Task> tasks) throws IOException {
+    public void saveTasksToFile(ArrayList<tasks.Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(f);
-        for (Task task : tasks) {
-            if (task instanceof Todo) {
+        for (tasks.Task task : tasks) {
+            if (task instanceof tasks.Todo) {
                 fw.write("T | " + (task.isDone ? "1" : "0") + " | " + task.description + System.lineSeparator());
-            } else if (task instanceof Deadline) {
-                fw.write("D | " + (task.isDone ? "1" : "0") + " | " + task.description + " | " + ((Deadline) task).by + System.lineSeparator());
-            } else if (task instanceof Event) {
-                fw.write("E | " + (task.isDone ? "1" : "0") + " | " + task.description + " | " + ((Event) task).from + " | " + ((Event) task).to + System.lineSeparator());
+            } else if (task instanceof tasks.Deadline) {
+                fw.write("D | " + (task.isDone ? "1" : "0") + " | " + task.description + " | " + ((tasks.Deadline) task).by + System.lineSeparator());
+            } else if (task instanceof tasks.Event) {
+                fw.write("E | " + (task.isDone ? "1" : "0") + " | " + task.description + " | " + ((tasks.Event) task).from + " | " + ((tasks.Event) task).to + System.lineSeparator());
             }        }
         fw.close();
     }

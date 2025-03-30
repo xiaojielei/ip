@@ -1,3 +1,6 @@
+package main;
+
+import parser.Parser;
 import java.io.IOException;
 
 

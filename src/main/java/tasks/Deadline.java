@@ -1,3 +1,5 @@
+package tasks;
+
 public class Deadline extends Task {
 
     protected String by;
@@ -9,6 +11,10 @@ public class Deadline extends Task {
 
     public Deadline(String input) {
         super(input);
+    }
+
+    public String getBy() {
+        return by;
     }
 
     @Override

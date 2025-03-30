@@ -1,15 +1,25 @@
+package parser;
+
+import exceptions.DukeException;
+import exceptions.InvalidCommandException;
+import tasks.Task;
+import tasks.Tasklist;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import storage.Storage;
+import ui.Ui;
+import constants.Messages;
 
 /**
  * Run the major flow of the whole program
  * and deals with making sense of the user command
  */
 public class Parser {
-    private static final ArrayList<Task> tasks = new ArrayList<>(); // The list of tasks managed by Duke.
+    private static final ArrayList<Task> tasks = new ArrayList<>(); // The list of tasks managed by main.Duke.
     private static final Storage storage = new Storage();
-    private static final Ui ui = new Ui();
 
     /**
      * Deals with the user's command
@@ -18,21 +28,22 @@ public class Parser {
     public void runDuke() throws IOException {
         storage.loadTasksFromFile(tasks);
         Scanner in = new Scanner(System.in);
-        ui.Greet();
+        Ui UI = new Ui(in);
+        UI.greet();
         Tasklist tasklist = new Tasklist(tasks);
 
         while (true) {
-            String input = in.nextLine();
+            String input = UI.getUserInput();
             try {
                 if (input == null) {
-                    throw new DukeException("Input is null.");
+                    throw new InvalidCommandException(Messages.NULL_INPUT);
                 }
                 String[] words = input.split(" ", 2);
                 String command = words[0];
 
                 switch (command) {
                 case "bye":
-                    ui.exit();
+                    UI.exit();
                     return;
                 case "list":
                     tasklist.list();
@@ -59,7 +70,7 @@ public class Parser {
                     tasklist.find(input);
                     break;
                 default:
-                    throw new DukeException("Sorry, I don't understand that command. Please try again.");
+                    throw new InvalidCommandException(Messages.INVALID_USER_COMMAND);
                 }
                 storage.saveTasksToFile(tasks);
             } catch (DukeException | IOException e) {

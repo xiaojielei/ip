@@ -1,8 +1,17 @@
+package storage;
+
+import tasks.Deadline;
+import tasks.Event;
+import tasks.Task;
+import tasks.Todo;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import constants.*;
 
 /**
  * Deals with loading tasks from the file and saving tasks in the file
@@ -59,11 +68,11 @@ public class Storage {
         FileWriter fw = new FileWriter(f);
         for (Task task : tasks) {
             if (task instanceof Todo) {
-                fw.write("T | " + (task.isDone ? "1" : "0") + " | " + task.description + System.lineSeparator());
+                fw.write("T | " + (task.getIsDone() ? "1" : "0") + " | " + task.getDescription() + System.lineSeparator());
             } else if (task instanceof Deadline) {
-                fw.write("D | " + (task.isDone ? "1" : "0") + " | " + task.description + " | " + ((Deadline) task).by + System.lineSeparator());
+                fw.write("D | " + (task.getIsDone() ? "1" : "0") + " | " + task.getDescription() + " | " + ((Deadline) task).getBy() + System.lineSeparator());
             } else if (task instanceof Event) {
-                fw.write("E | " + (task.isDone ? "1" : "0") + " | " + task.description + " | " + ((Event) task).from + " | " + ((Event) task).to + System.lineSeparator());
+                fw.write("E | " + (task.getIsDone() ? "1" : "0") + " | " + task.getDescription() + " | " + ((Event) task).getFrom() + " | " + ((Event) task).getTo() + System.lineSeparator());
             }        }
         fw.close();
     }

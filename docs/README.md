@@ -1,14 +1,14 @@
-# Duke User Guide
+# main.Duke User Guide
 ![img.png](img.png)
 ## Introduction
-Duke is a simple chatbot that allows users to manage their tasks efficiently. Users can add, list, mark, unmark, delete, and find tasks. The chatbot saves tasks to a file and loads them automatically upon startup.
+main.Duke is a simple chatbot that allows users to manage their tasks efficiently. Users can add, list, mark, unmark, delete, and find tasks. The chatbot saves tasks to a file and loads them automatically upon startup.
 
 ## Getting Started
 
-### Running Duke
-To start Duke, run the `Duke` Java program in your terminal or IDE. The chatbot will greet you with:
+### Running main.Duke
+To start main.Duke, run the `main.Duke` Java program in your terminal or IDE. The chatbot will greet you with:
 ```
-Hello! I'm Duke
+Hello! I'm main.Duke
 What can I do for you?
 ```
 
@@ -28,12 +28,12 @@ Example: `list`
 ```
 
 ### 2. Adding Tasks
-Duke supports three types of tasks:
+main.Duke supports three types of tasks:
 - **To-do**
-- **Deadline**
-- **Event**
+- **tasks.Deadline**
+- **tasks.Event**
 
-#### a) Adding a To-do Task
+#### a) Adding a To-do tasks.Task
 **Command:** `todo <task description>`
 
 Example: `todo Read a book`
@@ -44,7 +44,7 @@ Got it. I've added this task:
 Now you have 1 task in the list.
 ```
 
-#### b) Adding a Deadline Task
+#### b) Adding a tasks.Deadline tasks.Task
 **Command:** `deadline <task description> /by <due date>`
 
 Adds a task with a deadline to the list.
@@ -57,7 +57,7 @@ Got it. I've added this task:
 Now you have 2 tasks in the list.
 ```
 
-#### c) Adding an Event Task
+#### c) Adding an tasks.Event tasks.Task
 **Command:** `event <task description> /from <start time> /to <end time>`
 
 Example: `event Team meeting /from 2pm /to 4pm`
@@ -88,7 +88,7 @@ OK, I've marked this task as not done yet:
 [T][ ] Read a book
 ```
 
-### 5. Deleting a Task
+### 5. Deleting a tasks.Task
 **Command:** `delete <task number>`
 
 Example: `delete 2`
@@ -109,7 +109,7 @@ Here are the matching tasks in your list:
 1. [T][ ] Read a book
 ```
 
-### 7. Exiting Duke
+### 7. Exiting main.Duke
 **Command:** `bye`
 
 Example: `bye`
@@ -118,11 +118,11 @@ Example: `bye`
 Bye. Hope to see you again soon!
 ```
 
-## Task Storage
-Duke saves tasks in a file located at `docs/duke.txt`. The file is automatically created if it does not exist, and tasks are loaded when Duke starts.
+## tasks.Task storage.storage
+main.Duke saves tasks in a file located at `docs/duke.txt`. The file is automatically created if it does not exist, and tasks are loaded when main.Duke starts.
 
 ## Error Handling
-Duke handles invalid inputs gracefully and provides error messages to guide the user.
+main.Duke handles invalid inputs gracefully and provides error messages to guide the user.
 
 Example of an error message:
 ```

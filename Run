@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Run {
-    private static final ArrayList<Task> tasks = new ArrayList<>(); // The list of tasks managed by Duke.
-    private static final Storage storage = new Storage();
-    private static final Ui ui = new Ui();
+    private static final ArrayList<tasks.Task> tasks = new ArrayList<>(); // The list of tasks managed by main.Duke.
+    private static final storage.storage storage = new storage.storage();
+    private static final ui.Ui ui = new ui.Ui();
 
     public Run () {
     }
@@ -14,7 +14,7 @@ public class Run {
         storage.loadTasksFromFile(tasks);
         Scanner in = new Scanner(System.in);
         ui.Greet();
-        Tasklist tasklist = new Tasklist(tasks);
+        tasks.Tasklist tasklist = new tasks.Tasklist(tasks);
 
         while (true) {
             String input = in.nextLine();
@@ -39,10 +39,10 @@ public class Run {
                     String wordToFind = input.substring(5);
                     tasklist.find(wordToFind);
                 } else {
-                    throw new DukeException("Sorry, I don't understand that command. Please try again.");
+                    throw new exceptions.DukeException("Sorry, I don't understand that command. Please try again.");
                 }
                 storage.saveTasksToFile(tasks);
-            } catch (DukeException | IOException e) {
+            } catch (exceptions.DukeException | IOException e) {
                 tasklist.printLine();
                 System.out.println(e.getMessage());
                 tasklist.printLine();
