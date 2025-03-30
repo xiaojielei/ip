@@ -21,7 +21,7 @@ public class Ui {
      * Prints the greeting message
      */
     public void greet() {
-        System.out.println("Hello! I'm main.Duke\n" + "What can I do for you?");
+        System.out.println("Hello! I'm Duke\n" + "What can I do for you?");
     }
 
     /**
