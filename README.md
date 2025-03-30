@@ -6,10 +6,10 @@ Duke is a simple chatbot that allows users to manage their tasks efficiently. Us
 
 ## Getting Started
 
-### Running main.Duke
+### Running Duke
 To start Duke, run the `main.Duke` Java program in your terminal or IDE. The chatbot will greet you with:
 ```
-Hello! I'm main.Duke
+Hello! I'm Duke
 What can I do for you?
 ```
 
