@@ -1,26 +1,131 @@
-# main.Duke project template
+# Duke User Guide
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+![img.png](docs/img.png)
+## Introduction
+main.Duke is a simple chatbot that allows users to manage their tasks efficiently. Users can add, list, mark, unmark, delete, and find tasks. The chatbot saves tasks to a file and loads them automatically upon startup.
 
-## Setting up in Intellij
+## Getting Started
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+### Running main.Duke
+To start main.Duke, run the `main.Duke` Java program in your terminal or IDE. The chatbot will greet you with:
+```
+Hello! I'm main.Duke
+What can I do for you?
+```
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/main.Duke.java` file, right-click it, and choose `Run main.Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+## Features
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+### 1. Listing All Tasks
+**Command:** `list`
+
+Displays all tasks stored in the task list.
+
+Example: `list`
+
+```
+1. [T][ ] Read a book
+2. [D][ ] Submit assignment (by: Monday)
+3. [E][ ] Team meeting (from: 2pm to: 4pm)
+```
+
+### 2. Adding Tasks
+main.Duke supports three types of tasks:
+- **To-do**
+- **tasks.Deadline**
+- **tasks.Event**
+
+#### a) Adding a To-do tasks.Task
+**Command:** `todo <task description>`
+
+Example: `todo Read a book`
+
+```
+Got it. I've added this task:
+[T][ ] Read a book
+Now you have 1 task in the list.
+```
+
+#### b) Adding a tasks.Deadline tasks.Task
+**Command:** `deadline <task description> /by <due date>`
+
+Adds a task with a deadline to the list.
+
+Example: `deadline Submit assignment /by Monday`
+
+```
+Got it. I've added this task:
+[D][ ] Submit assignment (by: Monday)
+Now you have 2 tasks in the list.
+```
+
+#### c) Adding an tasks.Event tasks.Task
+**Command:** `event <task description> /from <start time> /to <end time>`
+
+Example: `event Team meeting /from 2pm /to 4pm`
+
+```
+Got it. I've added this task:
+[E][ ] Team meeting (from: 2pm to: 4pm)
+Now you have 3 tasks in the list.
+```
+
+### 3. Marking Tasks as Done
+**Command:** `mark <task number>`
+
+Example: `mark 1`
+
+```
+Nice! I've marked this task as done:
+[T][X] Read a book
+```
+
+### 4. Marking Tasks as Not Done
+**Command:** `unmark <task number>`
+
+Example: `unmark 1`
+
+```
+OK, I've marked this task as not done yet:
+[T][ ] Read a book
+```
+
+### 5. Deleting a tasks.Task
+**Command:** `delete <task number>`
+
+Example: `delete 2`
+
+```
+Noted. I've removed this task:
+[D][ ] Submit assignment (by: Monday)
+Now you have 2 tasks in the list.
+```
+
+### 6. Finding Tasks
+**Command:** `find <keyword>`
+
+Example: `find book`
+
+```
+Here are the matching tasks in your list:
+1. [T][ ] Read a book
+```
+
+### 7. Exiting main.Duke
+**Command:** `bye`
+
+Example: `bye`
+
+```
+Bye. Hope to see you again soon!
+```
+
+## tasks.Task storage.storage
+main.Duke saves tasks in a file located at `docs/duke.txt`. The file is automatically created if it does not exist, and tasks are loaded when main.Duke starts.
+
+## Error Handling
+main.Duke handles invalid inputs gracefully and provides error messages to guide the user.
+
+Example of an error message:
+```
+Oops! The description of a todo cannot be empty.
+```

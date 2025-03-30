@@ -1,4 +1,4 @@
-# main.Duke User Guide
+# Duke User Guide
 ![img.png](img.png)
 ## Introduction
 main.Duke is a simple chatbot that allows users to manage their tasks efficiently. Users can add, list, mark, unmark, delete, and find tasks. The chatbot saves tasks to a file and loads them automatically upon startup.
