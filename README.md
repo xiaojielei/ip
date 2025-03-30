@@ -7,7 +7,7 @@ Duke is a simple chatbot that allows users to manage their tasks efficiently. Us
 ## Getting Started
 
 ### Running main.Duke
-To start main.Duke, run the `main.Duke` Java program in your terminal or IDE. The chatbot will greet you with:
+To start Duke, run the `main.Duke` Java program in your terminal or IDE. The chatbot will greet you with:
 ```
 Hello! I'm main.Duke
 What can I do for you?
@@ -29,7 +29,7 @@ Example: `list`
 ```
 
 ### 2. Adding Tasks
-main.Duke supports three types of tasks:
+Duke supports three types of tasks:
 - **Todo**
 - **Deadline**
 - **Event**
@@ -89,7 +89,7 @@ OK, I've marked this task as not done yet:
 [T][ ] Read a book
 ```
 
-### 5. Deleting a tasks.Task
+### 5. Deleting a task
 **Command:** `delete <task number>`
 
 Example: `delete 2`
@@ -110,7 +110,7 @@ Here are the matching tasks in your list:
 1. [T][ ] Read a book
 ```
 
-### 7. Exiting main.Duke
+### 7. Exiting Duke
 **Command:** `bye`
 
 Example: `bye`
@@ -119,11 +119,11 @@ Example: `bye`
 Bye. Hope to see you again soon!
 ```
 
-## tasks.Task storage.storage
-main.Duke saves tasks in a file located at `docs/duke.txt`. The file is automatically created if it does not exist, and tasks are loaded when main.Duke starts.
+## Task Storage
+Duke saves tasks in a file located at `docs/duke.txt`. The file is automatically created if it does not exist, and tasks are loaded when main.Duke starts.
 
 ## Error Handling
-main.Duke handles invalid inputs gracefully and provides error messages to guide the user.
+Duke handles invalid inputs gracefully and provides error messages to guide the user.
 
 Example of an error message:
 ```
