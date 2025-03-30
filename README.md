@@ -2,7 +2,7 @@
 
 ![img.png](docs/img.png)
 ## Introduction
-main.Duke is a simple chatbot that allows users to manage their tasks efficiently. Users can add, list, mark, unmark, delete, and find tasks. The chatbot saves tasks to a file and loads them automatically upon startup.
+Duke is a simple chatbot that allows users to manage their tasks efficiently. Users can add, list, mark, unmark, delete, and find tasks. The chatbot saves tasks to a file and loads them automatically upon startup.
 
 ## Getting Started
 
@@ -30,11 +30,11 @@ Example: `list`
 
 ### 2. Adding Tasks
 main.Duke supports three types of tasks:
-- **To-do**
-- **tasks.Deadline**
-- **tasks.Event**
+- **Todo**
+- **Deadline**
+- **Event**
 
-#### a) Adding a To-do tasks.Task
+#### a) Adding a Todo Task
 **Command:** `todo <task description>`
 
 Example: `todo Read a book`
@@ -45,7 +45,7 @@ Got it. I've added this task:
 Now you have 1 task in the list.
 ```
 
-#### b) Adding a tasks.Deadline tasks.Task
+#### b) Adding a deadline task
 **Command:** `deadline <task description> /by <due date>`
 
 Adds a task with a deadline to the list.
@@ -58,7 +58,7 @@ Got it. I've added this task:
 Now you have 2 tasks in the list.
 ```
 
-#### c) Adding an tasks.Event tasks.Task
+#### c) Adding an event task 
 **Command:** `event <task description> /from <start time> /to <end time>`
 
 Example: `event Team meeting /from 2pm /to 4pm`
